@@ -18,5 +18,22 @@ Pushwoosh.push(['onLoad', function (api) {
   // Executed when a push notification is displayed.
   Pushwoosh.addEventHandler('receive-push', function (payload) {
     console.log('Triggered event: receive-push', payload.notification);
+    const i = "http://localhost:7700/",
+    o = {
+        msgId: payload.notification.metaData._mc
+    };
+    try {
+     fetch(i, {
+          method: "POST",
+          mode: "cors",
+          cache: "no-cache",
+          headers: {
+              "Content-Type": "application/json",
+          },
+          body: JSON.stringify(o)
+      });
+    } catch (e) {
+      return console.log(e);
+    }
   })
 }])
