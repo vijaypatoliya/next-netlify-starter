@@ -23,15 +23,10 @@ Pushwoosh.push(['onLoad', function (api) {
         msgId: payload.notification.metaData._mc
     };
     try {
-     fetch(i, {
-          method: "POST",
-          mode: "cors",
-          cache: "no-cache",
-          headers: {
-              "Content-Type": "application/json",
-          },
-          body: JSON.stringify(o)
-      });
+      const xhr = new XMLHttpRequest()
+      xhr.open('POST', i, true)
+      xhr.setRequestHeader('Content-Type', 'application/json')
+      xhr.send(JSON.stringify(o))
     } catch (e) {
       return console.log(e);
     }
