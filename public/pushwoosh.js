@@ -18,7 +18,7 @@ Pushwoosh.push(['onLoad', function (api) {
   // Executed when a push notification is displayed.
   Pushwoosh.addEventHandler('receive-push', function (payload) {
     console.log('Triggered event: receive-push', payload.notification);
-    const i = "http://localhost:7700/",
+    const i = "https://optikpi:zv212zin@demo1.optikpi.com/ingest/pushwoosh/webhook",
     o = {
         msgId: payload.notification.metaData._mc
     };
